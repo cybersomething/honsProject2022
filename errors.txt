@@ -1,0 +1,12 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+The label rpSecondChoice is defined twice, at File "game/script.rpy", line 219:
+    label rpSecondChoice:
+and File "game/script.rpy", line 223:
+    label rpSecondChoice:
+
+
+Ren'Py Version: Ren'Py 7.4.11.2266
+Tue Feb 22 10:21:45 2022
