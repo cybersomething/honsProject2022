@@ -2,11 +2,13 @@
 errors listed below, and try again.
 
 
-The label rpSecondChoice is defined twice, at File "game/script.rpy", line 219:
-    label rpSecondChoice:
-and File "game/script.rpy", line 223:
-    label rpSecondChoice:
+File "game/script.rpy", line 556: expected ':' not found.
+    label endOfUpskirtingScenario
+                                 ^
 
+File "game/script.rpy", line 653: expected ':' not found.
+    label endOfGame
+                   ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Tue Feb 22 10:21:45 2022
+Tue Mar  1 09:45:33 2022
