@@ -8,20 +8,19 @@ define player = Character("[player_name]")
 #revenge porn characters
 define faye = Character("Faye")
 define ethan = Character("Ethan")
-define policeOfficer1 = Character("Aneesa")
-define policeOfficer2 = Character("Chrissy")
 define RPhelplineWorker = Character("Reya")
 define cian = Character("Cian")
 define aliyah = Character("Aliyah")
 define mara = Character("Mara")
 define lukasz = Character("Łukasz")
+define youngWoman = Character("Young Woman")
 
 #sextortion characters
 define alec = Character("Alec")
 
 # The game starts here.
 
-#This is the Revenge Porn Storyline - CURRENTLY UNDER PROGRESS
+#This is the Revenge Porn Storyline - NEEDS EDITED
 # TODO - Complete Revenge Porn Storyline
 # TODO - Complete Sextortion storyline
 # TODO - Add character images
@@ -29,7 +28,7 @@ define alec = Character("Alec")
 
 label start:
 
-    "Before we go any further, what's your name?"
+    "Before we go any further, how do you want the characters to refer to you?"
     $ player_name = renpy.input("What is your name?")
     $ player_name = player_name.strip()
     scene bg room
@@ -454,8 +453,7 @@ label sextortionWhatIsIt:
         "When talking to people online, trust your gut instinct. If you are not comfortable, end the conversation and stay in control of what you do."
         "Remember that you're the victim and that you are not to blame. Immediately report the incident to the police and speak to someone you trust."
 
-    #This is the end of the road :)
-    # This ends the game.
+    jump upskirtingWhatIsIt
 
 label upskirtingWhatIsIt:
 
@@ -476,87 +474,92 @@ label upskirtingWhatIsIt:
 
         menu upskirtingOptions1:
 
-        "Loudly ask the person with the phone what they're doing and try to make a scene?"
-            jump USSceneApproach
-        "Wait until the person goes away and approach the woman?"
-            jump USWaitApproach
+            "Loudly ask the person with the phone what they're doing and try to make a scene?":
+                jump USSceneApproach
+            "Wait until the person goes away and approach the woman?":
+                jump USWaitApproach
 
-        label USSceneApproach:
+    label USSceneApproach:
 
-            "You shout out at the person, which draws attention to yourself, from those waiting in the queues including the young woman."
-            player "What do you think you're doing?"
-            "Clearly taken aback by the fact that they've been caught and there's people watching, they drop their basket and rush away"
+        "You shout out at the person, which draws attention to yourself, from those waiting in the queues including the young woman."
+        player "What do you think you're doing?"
+        "Clearly taken aback by the fact that they've been caught and there's people watching, they drop their basket and rush away"
 
-            menu sceneApproachMenu:
+        menu sceneApproach:
 
-            "Chase after them"
+            "Chase after them":
                 jump chasePerson
-            "Speak to the young woman"
+            "Speak to the young woman":
                 jump speakToYoungWoman
 
-        label chasePerson:
-            "You run out after them and try to give chase, but they're already gone."
-            "Thankfully you got a good look at them, so you know what they look like."
-            "You go back into the aisle to speak to the young woman."
+    label chasePerson:
+        "You run out after them and try to give chase, but they're already gone."
+        "Thankfully you got a good look at them, so you know what they look like."
+        "You go back into the aisle to speak to the young woman."
 
-            jump speakToYoungWoman
+        jump speakToYoungWoman
 
-        label speakToYoungWoman:
-            player "Sorry about that, did you know that they had a phone underneath your skirt?"
-            youngWoman "They did what? I didn't even notice..."
-            player "I don't know if they were recording or not, but they had their camera facing up your skirt."
-            player "We should maybe speak to a manager and get them to contact the police."
-            youngWoman "Y-yeah, okay..."
-            "The young woman is clearly in shock from what just happened, so you help take her to the customer service counter where you ask to speak to a manager about what's just happened."
+    label speakToYoungWoman:
+        player "Sorry about that, did you know that they had a phone underneath your skirt?"
+        youngWoman "They did what? I didn't even notice..."
+        player "I don't know if they were recording or not, but they had their camera facing up your skirt."
+        player "We should maybe speak to a manager and get them to contact the police."
+        youngWoman "Y-yeah, okay..."
+        "The young woman is clearly in shock from what just happened, so you help take her to the customer service counter where you ask to speak to a manager about what's just happened."
 
-        label USWaitApproach:
+    jump endOfUpskirtingScenario
 
-            "You decide the safest option is to wait until the person has moved away, you don't want to risk them getting violent."
+    label USWaitApproach:
 
-            "However, you could take a video of them from where you're standing?"
+        "You decide the safest option is to wait until the person has moved away, you don't want to risk them getting violent."
 
-            menu takeVideoOfPerson:
+        "However, you could take a video of them from where you're standing?"
 
-                "Start recording":
-                    jump recordPerson
-                "Don't record":
-                    jump dontRecord
+        menu takeVideoOfPerson:
 
-            label recordPerson:
+            "Start recording":
+                jump recordPerson
+            "Don't record":
+                jump dontRecord
 
-                "You grab your phone and start recording, making sure that you have the person in full view, as well as what they're doing."
-                "At least you've now got video proof of what they looked like and what they were up to."
-                "Just a few seconds after you've started recording, they pick up their basket and walk away to another checkout - with the young woman none the wiser as to what's just happened."
-                "Now that they've gone, you approach the young woman to explain what's happened."
+    label recordPerson:
 
-                player "Hi, sorry to interrupt you like this but did you know that they had a phone underneath your skirt?"
-                youngWoman "They did what? I didn't even notice..."
-                player "I don't know if they were recording or not, but they had their camera facing up your skirt."
-                player "I managed to get a recording of them, so you can see what they look like and what they were doing."
-                player "I think we should maybe get a manager and ask them to contact the police."
-                youngWoman "Y-yeah, okay..."
-                "The young woman is clearly in shock from what just happened, so you help take her to the customer service counter where you ask to speak to a manager about what's just happened."
+        "You grab your phone and start recording, making sure that you have the person in full view, as well as what they're doing."
+        "At least you've now got video proof of what they looked like and what they were up to."
+        "Just a few seconds after you've started recording, they pick up their basket and walk away to another checkout - with the young woman none the wiser as to what's just happened."
+        "Now that they've gone, you approach the young woman to explain what's happened."
 
-            label dontRecord:
+        player "Hi, sorry to interrupt you like this but did you know that they had a phone underneath your skirt?"
+        youngWoman "They did what? I didn't even notice..."
+        player "I don't know if they were recording or not, but they had their camera facing up your skirt."
+        player "I managed to get a recording of them, so you can see what they look like and what they were doing."
+        player "I think we should maybe get a manager and ask them to contact the police."
+        youngWoman "Y-yeah, okay..."
+        "The young woman is clearly in shock from what just happened, so you help take her to the customer service counter where you ask to speak to a manager about what's just happened."
 
-                "You make a mental note of what the person looks like, what they're wearing and what time it is."
-                "You wait until the person has taken their basket and walked away - and approach the young woman and explain what's happened."
+        jump endOfUpskirtingScenario
 
-                player "Hi, sorry to interrupt - did you know that they had a phone in their basket which they had put down underneath your skirt?"
-                youngWoman "They did what? I didn't even notice..."
-                player "I don't know if they were recording or not, but that was all they had in their basket with the camera facing up the way."
-                player "I think we should maybe get a manager and ask them to contact the police."
-                youngWoman "Y-yeah, okay..."
-                "The young woman is clearly in shock from what just happened, so you help take her to the customer service counter where you ask to speak to a manager about what's just happened."
+    label dontRecord:
+
+        "You make a mental note of what the person looks like, what they're wearing and what time it is."
+        "You wait until the person has taken their basket and walked away - and approach the young woman and explain what's happened."
+
+        player "Hi, sorry to interrupt - did you know that they had a phone in their basket which they had put down underneath your skirt?"
+        youngWoman "They did what? I didn't even notice..."
+        player "I don't know if they were recording or not, but that was all they had in their basket with the camera facing up the way."
+        player "I think we should maybe get a manager and ask them to contact the police."
+        youngWoman "Y-yeah, okay..."
+        "The young woman is clearly in shock from what just happened, so you help take her to the customer service counter where you ask to speak to a manager about what's just happened."
+
+    label endOfUpskirtingScenario:
 
         "Upskirting to happen to anyone, of any gender -  it's not limited to skirts or dresses, people wearing kilts, shorts, trousers and other clothes can be upskirted."
 
-    return
+    jump sendingUSIWhatIsIt
 
 label sendingUSIWhatIsIt:
 
         "Sending unsolicited sexual images is against the law and is categorised as 'Communicating Indecently' under the Sexual Offences Act 2009."
-
         "Communicating Indecently can be defined as 'written or verbal sexual communications that are sent without consent and done for sexual gratification or to humiliate, distress or alarm the victim.'"
 
         "Sending unsolicited sexual images is also known as 'Cyber Flashing'. These images can be sent directly through social media, emails and more recently 'air-dropped' to unknowing victims."
@@ -583,11 +586,11 @@ label sendingUSIWhatIsIt:
                 player "I used to, but not anymore."
 
         mara "Hang on Cian, what are you doing that's making them ghost you? You're normally a casanova with the ladies!"
-        cian "Well the conversation gets a bit dry, so I try to spice it up by sending them a picture of my willy."
+        cian "Well the conversation gets a bit dry, so I try to spice it up by sending them a cheeky dick pic."
         cian "It worked before, so I thought I'd try it again!"
         lukasz "Mate, that's not okay - you wouldn't want to open your messages to some guy's willy..."
         mara "Yeah, that's actually not okay - no wonder they're ghosting you!"
-        aliyah "I've sent nudes to people I'm talking to - it works for me! Well most of the time at least..."
+        aliyah "I've sent nudes to people I'm talking to - it works for me! Well, most of the time at least..."
 
         menu playerOpinionUSN:
 
@@ -597,18 +600,134 @@ label sendingUSIWhatIsIt:
             "It's just a bit of fun.":
                 player "I have to agree with [cian] and [aliyah] - it's just a bit of fun, no-one's getting hurt..."
 
-        #TODO introduce effects of USI to recipients (lukasz and mara)
-        #TODO emphasise fact that USI is a crime and that's it's not socially acceptable
-return
+        mara "Honestly, getting a dick pic off of a random is horrible."
+        mara "One time I was waiting in line to get a coffee, when someone airdropped me a picture of a penis and continued to send it after I declined each time."
+        mara "I didn't know what to do - so I just ran out the shop, I was so embarrassed and horrified..."
+        lukasz "Yeah, I've had similar experiences - I've had a girl I had matched with on Tinder send me a snapchat of her naked, asking me what I thought"
+        lukasz "The conversation hadn't even been flirty - she just sent it, I was with my parents at the time too"
+        lukasz "You wouldn't flash someone in public, so why is it different when it's on snapchat or through private messages?"
+        aliyah "I guess I never really thought of it that way..."
+        mara "Also it's actually against the law, has been since 2009 here in Scotland"
+        cian "[player], did you know that it was against the law?"
 
-#label recievingUSIWhatIsIt:
-#return
+        menu playerLawUSI:
+            "Yes, I did.":
+                player "Yeah, I did."
+            "No actually, I didn't!":
+                player "No actually, I didn't!"
+
+        cian "I mean, I never done it with the intent to be vulgar - I only ever meant it as a bit of fun. Guess I won't be doing that again!"
+        mara "Sending nudes to your partner is okay, if you have consent to of course - but definitely not to strangers or people that haven't agreed."
+        aliyah "Yeah, I get you - sorry for saying it was a bit of fun. I didn't realise how much of an affect it would actually have."
+        cian "Same here, sorry [lukasz] and [mara]. Guess they were right to ghost me after all - learned my lesson!"
+
+        #TODO summary of USI and RSI - why it's not okay.
+
+        jump irlSAWhatIsIt
 
 label irlSAWhatIsIt:
 
     "The use of technology to facilitate sexual violence is a crime that's becoming more common."
-    ""
+    "This crime is carried out by using technology to assist a perpetrator in carrying out sexual violence against a victim."
+    "An example of this would be two people arranging to meet for a date or drinks, which leads to the perpetrator sexually assaulting the victim."
 
-return
+    #Start of scenario
 
+    "Your cousin Stephen is excited about a date that he has tonight with a 'Lydia Bain'. He's been talking to her for a while now on a popular dating app - and they've finally arranged to go and grab some drinks together."
+    "You drop Stephen off at the bar and ask him to let you know how it goes..."
+    "The next afternoon you get a text from Stephen saying it was okay, but he's not going to see her again."
+    "Something feels off, but you don't push it - sometimes people don't click."
+
+    "A few weeks pass, with Stephen getting progressively more distant from yourself and his friends."
+    "You're there for him and you remind him of that, but you don't know what's happened to make him so upset and depressed."
+
+    "You get a text from Stephen, on the weekend asking if you have any plans."
+
+    stephen "Hey [player], are u busy today?"
+    player "Hey Stephen, nah I'm pretty free - you looking to do something today?"
+    stephen "Yeh, I was wondering if u maybe wanted to grab a coffee or go for a drive - just catch-up?"
+
+    menu coffeeOrDrive:
+        "I could definitely go a coffee!":
+            player "yeah, coffee sounds like a good idea - where you thinking?"
+            jump goForCoffee
+        "A drive sounds like a plan!":
+            player "yeah, I could go for a wee drive - get out the house for a bit."
+            jump goForDrive
+
+
+    label goForCoffee:
+
+        stephen "There's the wee local one that's opened not long ago, it's got good coffee"
+        player "sounds good, I'll meet you there in 30 mins?"
+        stephen "cool, see u then"
+
+        "You arrive at the coffee shop, when Stephen arrives a few seconds later."
+        "You grab yourself and Stephen a warm drink and a slice of cake each and sit down with him."
+        "The cafe's pretty quiet, with just yourselves and the cashier who is busy stocking up."
+
+        player "So what's been happening in your life lately?"
+        stephen "Honestly, not much - just the usual, yourself?"
+        player "Pretty much the same, actually..."
+
+        "You both chat for a little while, just talking about life and what's being going on the past few weeks."
+        "After finishing your coffees and cakes, Stephen asks if you'd be okay to go and chat in the car for a bit."
+
+        jump stephenExplains
+
+    label goForDrive:
+
+        stephen "cool I'll come get you in about 10 mins?"
+        player "sounds good, see you then"
+
+        "Ten minutes later, you hear a car horn outside - Stephen's here."
+        "You hop into the car and head off with Stephen."
+
+        player "So what's been happening in your life lately?"
+        stephen "Honestly, not much - just the usual, yourself?"
+        player "Pretty much the same, actually..."
+
+        "You chat for a little while, grabbing some coffee from the drive-thru for the drive."
+        "Stephen suggests maybe stopping off at the country park or beach to drink them."
+
+        jump stephenExplains
+
+    label stephenExplains:
+
+        player "Everything alright with you?"
+        player "You've been a little bit distant recently..."
+        stephen "I need to tell you something, but I can't bring myself to do it"
+        player ""
+
+    label callStephen:
+
+        player "Hey, what's happened?"
+        player "Are you okay?"
+        stephen "..."
+        stephen "I think I was spiked last night..."
+        stephen "I woke up in a bedroom that I didn't recognise..."
+        stephen "I didn't have any clothes on and the girl I was on the date with was next to me."
+        player "Do you think she spiked you?"
+        stephen "I honestly can't remember much of what happened before it - so possibly?"
+        player "Are you still there or are you home? I can come get you if you need?"
+        stephen "I'm home, but I have the feeling that something bad happened."
+        player "Okay, I'll come over and make sure you're okay if that's alright?"
+        stephen "Yeah, but please don't tell my mum or your mum what's happened?"
+        player "I won't - I promise."
+
+
+
+    #Friend went out for a date with someone he met on Hinge
+    #Plan to go for a dinner as a first date
+    #Things don’t go as planned
+    #What advice do you give?
+
+    jump endOfGame
+
+label endOfGame:
+
+    "Thank you for playing, please remember to fill out the post-game section of the survey now."
+    "Your feedback is important for my honours project and is very much appreciated! :)"
+
+#end of game, send user back to start.
 return
