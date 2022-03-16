@@ -26,14 +26,14 @@ init python:
 define gui.accent_color = u'#99ccff'
 
 ## The color used for a text button when it is neither selected nor hovered.
-define gui.idle_color = u'#888888'
+define gui.idle_color = u'#000000'
 
 ## The small color is used for small text, which needs to be brighter/darker to
 ## achieve the same effect.
 define gui.idle_small_color = u'#aaaaaa'
 
 ## The color that is used for buttons and bars that are hovered.
-define gui.hover_color = u'#c1e0ff'
+define gui.hover_color = u'#aeaeae'
 
 ## The color used for a text button when it is selected but not focused. A
 ## button is selected if it is the current screen or preference value.
@@ -70,7 +70,7 @@ define gui.text_size = 33
 define gui.name_text_size = 45
 
 ## The size of text in the game's user interface.
-define gui.interface_text_size = 33
+define gui.interface_text_size = 40
 
 ## The size of labels in the game's user interface.
 define gui.label_text_size = 36
@@ -364,7 +364,7 @@ define gui.nvl_borders = Borders(0, 15, 0, 30)
 
 ## The maximum number of NVL-mode entries Ren'Py will display. When more entries
 ## than this are to be show, the oldest entry will be removed.
-define gui.nvl_list_length = 6
+define gui.nvl_list_length = None
 
 ## The height of an NVL-mode entry. Set this to None to have the entries
 ## dynamically adjust height.

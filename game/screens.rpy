@@ -5,6 +5,161 @@
 init offset = -1
 
 
+############ phone code here########
+# if you dont use  1920 x 1080 youre going to have to play with these numbers to get it to work and make the phone image be smaller somehow
+# just keep changing stuff and refreshing the game until it works, sorry lol
+
+
+init 5:
+    style phone_message_vbox:
+        xalign 0.5
+        yalign 0
+        ypos 380
+        xsize 360
+        xoffset -40
+
+    style phone_message_frame:
+        background Solid("#1982FC")
+        ypadding 10
+        xpadding 10
+
+    style phone_message_frame2:
+        background Solid("#5BC236")
+        ypadding 10
+        xpadding 10
+
+    style phone_message_contents:
+        spacing 10
+
+    style phone_message is say_dialogue:
+        xoffset 0
+        outlines []
+        xalign 1
+        yalign 0
+
+    style phone_message2 is say_dialogue:
+        xoffset 0
+        outlines []
+        xalign 1
+        yalign 0
+
+
+    style phone_message_who is phone_message:
+        color "#ecf0f1"
+        size 25
+
+    style phone_message_what is phone_message:
+        color "#ffffff"
+        size 24
+    style phone_reply is default:
+        size 18
+        xalign 0.5
+        xsize 475
+        background Solid("#666")
+        hover_background Solid("#78E8A0")
+        ypadding 10
+        xpadding 10
+
+
+screen phone_message(who, what):
+    vbox at incoming_message:
+        style_group "phone_message"
+        add "images/bubble-tip.png" at phone_message_bubble_tip
+
+        frame:
+            style_group "phone_message"
+            background Solid("#1982FC")
+
+            vbox:
+                style "phone_message_contents"
+                text who style "phone_message_who"
+                text what style "phone_message_what"
+
+screen phone_message2(who, what):
+    vbox at incoming_message:
+        style_group "phone_message"
+        xoffset -584
+        xalign 1.0
+        # this one adds the triangular tip for the bubble, if you change colors you change this images too
+        add "images/bubble-tip2.png" at phone_message_bubble_tip2
+
+        frame:
+            style_group "phone_message2"
+            background Solid("#5BC236")
+            xsize 200
+
+            vbox:
+                style "phone_message_contents"
+                text who style "phone_message_who"
+                text what style "phone_message_what"
+
+screen phone_message3(what):
+    vbox at incoming_message:
+        style_group "phone_message"
+        xoffset -584
+        xalign 1.0
+        # this one adds the triangular tip for the bubble, if you change colors you change this images too
+        add "images/bubble-tip2.png" at phone_message_bubble_tip2
+
+        frame:
+            style_group "phone_message2"
+            background Solid("#5BC236")
+            xsize 200
+
+            vbox:
+                style "phone_message_contents"
+                ##text who style "phone_message_who"
+                text what style "phone_message_what"
+
+screen phone_reply(reply1, label1, reply2, label2):
+    modal True
+    vbox:
+        xalign 0.5
+        yalign 0.8
+        spacing 5
+
+        textbutton "[reply1]" action Jump(label1) style "phone_reply"
+        textbutton "[reply2]" action Jump(label2) style "phone_reply"
+
+# here is a new menu that has more options than two
+# basically i just added one more textbutton here, and the additional labels needed in the call
+# if you wish to make a menu with one or four just copy the code below and modify it a bit
+screen phone_reply3(reply1, label1, reply2, label2, reply3, label3,):
+    modal True
+    vbox:
+        xalign 0.5
+        yalign 0.8
+        spacing 5
+
+        textbutton "[reply1]" action Jump(label1) style "phone_reply"
+        textbutton "[reply2]" action Jump(label2) style "phone_reply"
+        textbutton "[reply3]" action Jump(label3) style "phone_reply"
+
+
+style phone_reply_text:
+    xalign 0.5
+
+screen phone_message_image(who, what, img):
+    vbox at incoming_message:
+        style_group "phone_message"
+        # this one adds the triangular tip for the bubble, if you change colors you change this images too
+        add "images/bubble-tip.png" at phone_message_bubble_tip
+
+        frame:
+            style_group "phone_message"
+
+            vbox:
+                style "phone_message_contents"
+                text who style "phone_message_who"
+                text what style "phone_message_what"
+                add img
+
+
+
+############# phone code ends ############
+
+
+
 ################################################################################
 ## Styles
 ################################################################################
@@ -291,8 +446,11 @@ screen navigation():
     vbox:
         style_prefix "navigation"
 
-        xpos gui.navigation_xpos
-        yalign 0.5
+        if main_menu:
+            xalign 0.5
+        else:
+            xoffset 60
+        yalign 0.7
 
         spacing gui.navigation_spacing
 
@@ -337,6 +495,7 @@ style navigation_button:
 
 style navigation_button_text:
     properties gui.button_text_properties("navigation_button")
+    xalign 0.5
 
 
 ## Main Menu screen ############################################################
@@ -382,7 +541,7 @@ style main_menu_frame:
     xsize 420
     yfill True
 
-    background "gui/overlay/main_menu.png"
+    #background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0
@@ -1151,6 +1310,7 @@ style notify_text:
     properties gui.text_properties("notify")
 
 
+
 ## NVL screen ##################################################################
 ##
 ## This screen is used for NVL-mode dialogue and menus.
@@ -1160,34 +1320,40 @@ style notify_text:
 
 screen nvl(dialogue, items=None):
 
-    window:
-        style "nvl_window"
+    #### ADD THIS TO MAKE THE PHONE WORK!! :) ###
+    if nvl_mode == "phone":
+        use PhoneDialogue(dialogue, items)
+    else:
+    ####
+    ## Indent the rest of the screen
+        window:
+            style "nvl_window"
 
-        has vbox:
-            spacing gui.nvl_spacing
+            has vbox:
+                spacing gui.nvl_spacing
 
-        ## Displays dialogue in either a vpgrid or the vbox.
-        if gui.nvl_height:
+            ## Displays dialogue in either a vpgrid or the vbox.
+            if gui.nvl_height:
 
-            vpgrid:
-                cols 1
-                yinitial 1.0
+                vpgrid:
+                    cols 1
+                    yinitial 1.0
+
+                    use nvl_dialogue(dialogue)
+
+            else:
 
                 use nvl_dialogue(dialogue)
 
-        else:
+            ## Displays the menu, if given. The menu may be displayed incorrectly if
+            ## config.narrator_menu is set to True, as it is above.
+            for i in items:
 
-            use nvl_dialogue(dialogue)
+                textbutton i.caption:
+                    action i.action
+                    style "nvl_button"
 
-        ## Displays the menu, if given. The menu may be displayed incorrectly if
-        ## config.narrator_menu is set to True, as it is above.
-        for i in items:
-
-            textbutton i.caption:
-                action i.action
-                style "nvl_button"
-
-    add SideImage() xalign 0.0 yalign 1.0
+        add SideImage() xalign 0.0 yalign 1.0
 
 
 screen nvl_dialogue(dialogue):
