@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 556: expected ':' not found.
-    label endOfUpskirtingScenario
-                                 ^
-
-File "game/script.rpy", line 653: expected ':' not found.
-    label endOfGame
-                   ^
+File "game/script.rpy", line 314: expected statement.
+    "Faye", "I'll send them a message on Facebook Messenger, I think it'll be a bit easier than trying to explain over the phone."
+          ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Tue Mar  1 09:45:33 2022
+Tue Mar 15 20:30:04 2022
