@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 314: expected statement.
-    "Faye", "I'll send them a message on Facebook Messenger, I think it'll be a bit easier than trying to explain over the phone."
-          ^
+File "game/script.rpy", line 117: Line is indented, but the preceding jump statement statement does not expect a block. Please check this line's indentation.
+    label tutorial:
+    ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Tue Mar 15 20:30:04 2022
+Sun Mar 27 20:58:08 2022
