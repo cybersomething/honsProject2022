@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 117: Line is indented, but the preceding jump statement statement does not expect a block. Please check this line's indentation.
-    label tutorial:
-    ^
+File "game/screens.rpy", line 290: expected 'word' not found.
+    default
+           ^
 
 Ren'Py Version: Ren'Py 7.4.11.2266
-Sun Mar 27 20:58:08 2022
+Wed Mar 30 17:28:45 2022
