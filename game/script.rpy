@@ -260,7 +260,7 @@ label rpWhatIsIt:
 
     menu:
 
-        "Contact them and let them know what's happened":
+        "Contact Faye and let them know what's happened":
             jump contactFaye
 
         "Report the photos":

@@ -4,138 +4,6 @@
 ## them. Lines beginning with a single '#' mark are commented-out code, and you
 ## may want to uncomment them when appropriate.
 
-
-################# phone code stars ###################
-
-image phone = "images/phone.png"
-
-
-# Picking up the phone
-transform phone_pickup:
-    yalign 1.0 xalign 0.5
-    yoffset 900
-    easein 0.3 yoffset 100
-
-transform phone_hide:
-    yalign 1.0 xalign 0.5
-    yoffset 100
-    easein 0.3 yoffset 1300
-
-
-transform phone_message_bubble_tip:
-    xoffset 10
-    yoffset 1
-
-transform phone_message_bubble_tip2:
-    xoffset 165
-    yoffset 1
-
-transform scrolling_out_message:
-    easeout 0.1 yoffset -30 alpha 0
-
-transform incoming_message:
-    yoffset 100
-    alpha 0
-    parallel:
-        easein 0.1 alpha 1
-    parallel:
-        easein 0.2 yoffset 0
-
-    on hide:
-        scrolling_out_message
-
-
-#### labels to shortcut stuff so you dont need to copypaste stuff repeatedly! #####
-
-label phone_start:
-    window hide
-    show phone at phone_pickup
-    $ renpy.pause(0.2)
-    return
-
-label phone_msg:
-    $ renpy.pause()
-    hide screen phone_message
-    $ renpy.pause(0.1)
-    return
-
-label phone_msg2:
-    $ renpy.pause()
-    hide screen phone_message2
-    $ renpy.pause(0.1)
-    return
-
-label phone_msgi:
-    $ renpy.pause()
-    hide screen phone_message_image
-    $ renpy.pause(0.1)
-    return
-
-
-label phone_after_menu:
-    hide screen phone_message
-    hide screen phone_message2
-    hide screen phone_message3
-    hide screen phone_message_image
-    $ renpy.pause(0.1)
-    return
-
-label phone_end:
-    $ renpy.pause()
-    hide screen phone_message
-    hide screen phone_message2
-    hide screen phone_message3
-    hide screen phone_message_image
-    show phone at phone_hide
-    $ renpy.pause(0.2)
-    return
-
-label message(who, what):
-    $ renpy.pause()
-    hide screen phone_message
-    hide screen phone_message2
-    hide screen phone_message3
-    hide screen phone_message_image
-    $ renpy.pause(0.1)
-    # if you want to change the players name to be something else than "me" you can change it here
-    if who.lower() == "reya":
-        show screen phone_message2(who, what)
-    else:
-        show screen phone_message(who, what)
-    return
-
-label reply_message(what):
-    $ renpy.pause()
-    hide screen phone_message
-    hide screen phone_message2
-    hide screen phone_message3
-    hide screen phone_message_image
-    $ renpy.pause(0.1)
-    show screen phone_message3(what)
-    return
-
-label message_img(who, what,img):
-    $ renpy.pause()
-    hide screen phone_message
-    hide screen phone_message2
-    hide screen phone_message3
-    hide screen phone_message_image
-    $ renpy.pause(0.1)
-    show screen phone_message_image(who, what,img)
-    return
-
-
-label message_start(who, what):
-    # if you want to change the players name to be something else than "me" you can change it here
-    if who.lower() == "reya":
-        show screen phone_message2(who, what)
-    else:
-        show screen phone_message(who, what)
-    return
-
-######### phone code ends here ##########
-
-
 ## Basics ######################################################################
 
 ## A human-readable name of the game. This is used to set the default window
@@ -161,6 +29,11 @@ define config.version = "1.0"
 ## triple-quotes, and leave a blank line between paragraphs.
 
 define gui.about = _p("""
+As more people across the world gain access to the internet and the coronavirus pandemic exacerbating the need for internet-based communication, technology-facilitated abuse and cyber crime has risen exponentially.
+
+Due to this, there are very limited resources available, and very little mitigation in place to prevent and protect users becoming victims of online sexual violence. An accessible and user-friendly serious game has been developed to help educate the public about technology-facilitated sexual violence.
+
+This game will focus mainly on how these crimes are carried out and how to seek help if they become a victim.
 """)
 
 
@@ -338,3 +211,4 @@ init python:
 ## by a slash.
 
 # define build.itch_project = "renpytom/test-project"
+define build.itch_project = "cybersomething/practicing-safe-sext-a-serious-game"
